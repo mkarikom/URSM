@@ -166,7 +166,7 @@ if __name__ == "__main__":
     header_info += "Gibbs-EM for %d cell types.\n" % args.number_of_cell_types
     header_info += "Date and time: " + str(datetime.datetime.today()) + "\n"
     header_info += "Algorithm arguments:\n"
-    for (argname, argvalue) in vars(args).iteritems():
+    for (argname, argvalue) in vars(args).items():
         header_info += "\t--" + argname + ": " + str(argvalue) + "\n"
     header_info += "#" * 80
     logging.info(header_info)

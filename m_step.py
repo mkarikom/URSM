@@ -81,7 +81,7 @@ class LogitNormalMLE(object):
             self.gd_coeffA = suff_stats["coeffAsq"] * 2.0
             
             ## E[sum_l S_il * Y_il], where sum is within cell type
-            for k in xrange(self.K):
+            for k in range(self.K):
                 itype = self.itype[k]
                 if len(itype) > 0:
                     self.update_gd_coeffConst(k)
@@ -138,7 +138,7 @@ class LogitNormalMLE(object):
             init_step = 0.01 / self.L
 
         ## Optimize column-by-column
-        for k in xrange(self.K):
+        for k in range(self.K):
             ## with single cell part, need coordinate descent
             if self.hasSC and len(self.itype[k]) > 0:
                 niter = self.opt_Ak(k, init_step)
@@ -254,7 +254,7 @@ class LogitNormalMLE(object):
     def get_proj_A(self, A_val):
         """Given A_new (N x K), project onto feasible sets"""
         proj_A_val = np.zeros(A_val.shape)
-        for k in xrange(self.K):
+        for k in range(self.K):
             proj_A_val[:, k] = simplex_proj(A_val[:, k], self.min_A)
         return proj_A_val
 

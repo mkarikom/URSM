@@ -1,0 +1,29 @@
+################################################################################
+Gibbs-EM for 3 cell types.
+Date and time: 2021-09-08 12:02:07.960152
+Algorithm arguments:
+	--gibbs_sample_number: 50
+	--EM_maxiter: 50
+	--initial_tau_mean_var: None
+	--single_cell_type_file: /tmp/0a526876-2fc7-4159-ad3f-9b442115c20e.csv
+	--EM_convergence_tol: 1e-06
+	--initial_A_file: None
+	--initial_alpha_file: None
+	--initial_kappa_mean_var: None
+	--bulk_expr_file: /tmp/8f530de5-c443-47da-af82-cdbbb5df767f.csv
+	--iMarkers_file: None
+	--mininimal_A: 1e-06
+	--single_cell_expr_file: /tmp/0a526876-2fc7-4159-ad3f-9b442115c20e.csv
+	--verbose_level: 1
+	--est_alpha: True
+	--output_directory: /tmp
+	--number_of_cell_types: 3
+	--gibbs_thinning: 1
+	--logging_file: dfs6/pub/mkarikom/code/URSM/ms_demos/demo.log
+	--burn_in_length: 50
+	--output_prefix: 0c878a37-7a80-4243-9d3b-50d832958099_
+	--bk_mean_approx: True
+	--Mstep_maxiter: 500
+	--Mstep_convergence_tol: 1e-06
+################################################################################
+Loading data ...

@@ -18,7 +18,7 @@ def simplex_proj(y, min_y):
 
     cumsum = 0 ## cumulative sum
     (iBest, rouBest) = (-1, -1) ## the largest i such that rou>min_y
-    for i in xrange(p):
+    for i in range(p):
         cumsum += sorted_y[i]
         rou = sorted_y[i] + (1 - (p-i-1)*min_y - cumsum) / float(i+1)
         if rou > min_y:

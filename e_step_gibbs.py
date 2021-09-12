@@ -106,11 +106,11 @@ class LogitNormalGibbs_BK(object):
             ## use the proper gibbs sampling
             logging.debug("\tE-step for bulk samples started.")
             ## burn in
-            for giter in xrange(burnin):
+            for giter in range(burnin):
                 self.gibbs_cycle()
 
             ## sampling
-            for giter in xrange(sample*thin):
+            for giter in range(sample*thin):
                 self.gibbs_cycle()
                 if giter % thin == 0:
                     ## update sufficient statistics
@@ -131,7 +131,7 @@ class LogitNormalGibbs_BK(object):
 
     def draw_Z(self):
         """Z: M x N x K, counts"""
-        for j in xrange(self.M):
+        for j in range(self.M):
             for i in range(self.N):
                 pval = self.W[:, j]*self.A[i, :]
                 self.Z[j, i, :] = np.random.multinomial(n=self.BKexpr[j, i],
@@ -140,7 +140,7 @@ class LogitNormalGibbs_BK(object):
     def draw_W(self):
         """W: K x M, proportions"""
         post_alpha = self.Z.sum(axis=1)
-        for j in xrange(self.M):
+        for j in range(self.M):
             self.W[:, j] = np.random.dirichlet(self.alpha + post_alpha[j, :])
         ## update AW: N x M
         self.AW = np.dot(self.A, self.W)
@@ -149,7 +149,7 @@ class LogitNormalGibbs_BK(object):
     def draw_Z_mean(self):
         """Z: M x N x K, expected"""
         self.AW = np.dot(self.A, self.W) ## N-by-M
-        for j in xrange(self.M):
+        for j in range(self.M):
             for i in range(self.N):
                 pval = self.W[:, j]*self.A[i, :]
                 self.Z[j, i, :] = pval * self.BKexpr[j, i] /self.AW[i, j]
@@ -262,7 +262,7 @@ class LogitNormalGibbs_SC(object):
         ## E[- tau_l^2 * w_il]/2
         coeffAsq = (-self.w * np.transpose(np.square(self.tau))) / 2.0
         ## sum over l, mean over gibbs samples
-        for k in xrange(self.K):
+        for k in range(self.K):
             if len(self.itype[k]) > 0:
                 self.suff_stats["coeffA"][:, k] += coeffA[self.itype[k],:].sum(axis=0) / \
                                                          float(sample)
@@ -293,11 +293,11 @@ class LogitNormalGibbs_SC(object):
         self.init_gibbs()    
         
         ## burnin
-        for giter in xrange(burnin):
+        for giter in range(burnin):
             self.gibbs_cycle()
 
         ## sampling
-        for giter in xrange(sample*thin):
+        for giter in range(sample*thin):
             self.gibbs_cycle()
             if giter % thin == 0:
                 ## update sufficient statistics
@@ -319,14 +319,14 @@ class LogitNormalGibbs_SC(object):
         """w: L-by-N; augmented latent variable"""
         ns = np.ones(self.N, dtype=np.float)
         ## draw polya gamma parallelly
-        for l in xrange(self.L):
+        for l in range(self.L):
             ppg.pgdrawvpar(self.ppgs, ns, self.psi[l, :], self.w[l, :])
 
 
     def draw_S(self):
         """S: L-by-N; binary variables"""
         ## only update the entries where self.SCexpr==0
-        for index in xrange(len(self.izero[0])):
+        for index in range(len(self.izero[0])):
             (l, i) = (self.izero[0][index], self.izero[1][index])
             A_curr = self.A[i, self.G[l]]
 
@@ -344,7 +344,7 @@ class LogitNormalGibbs_SC(object):
 
     def draw_kappa_tau(self):
         """kappa, tau: scalars that defines psi"""
-        for l in xrange(self.L):
+        for l in range(self.L):
             A_curr = self.A[:, self.G[l]]
             # ## precision matrix
             # offdiag = sum(self.w[l, :] * A_curr)

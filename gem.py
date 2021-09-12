@@ -124,7 +124,7 @@ class LogitNormalGEM(object):
         
         if self.hasSC:
             self.itype = [] ## cell ids in each type
-            for k in xrange(self.K):
+            for k in range(self.K):
                 self.itype += [np.where(self.G == k)[0]]
         else:
             self.itype = None
@@ -236,7 +236,7 @@ class LogitNormalGEM(object):
             self.init_A = init_A
         elif self.hasSC:    
             self.init_A = np.ones([self.N, self.K], dtype=float)/self.N
-            for k in xrange(self.K):
+            for k in range(self.K):
                 ## use single cell sample mean if possible
                 if len(self.itype[k]) > 0:
                     self.init_A[:, k] = (stdSCexpr[self.itype[k], :]).mean(axis=0)
@@ -245,11 +245,11 @@ class LogitNormalGEM(object):
                     self.init_A[:, k] = BKmean
         else:
             self.init_A = np.zeros([self.N, self.K])     
-            for k in xrange(self.K):
+            for k in range(self.K):
                 self.init_A[:, k] = BKmean
 
         ## project A to simplex, with constraint A >= min_A
-        for k in xrange(self.K):
+        for k in range(self.K):
             self.init_A[:, k] = simplex_proj(self.init_A[:, k], self.min_A)
 
         self.A = np.copy(self.init_A)

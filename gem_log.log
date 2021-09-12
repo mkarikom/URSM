@@ -1,0 +1,37 @@
+################################################################################
+Gibbs-EM for 3 cell types.
+Date and time: 2021-09-07 17:30:07.802174
+Algorithm arguments:
+	--gibbs_sample_number: 50
+	--EM_maxiter: 50
+	--initial_tau_mean_var: None
+	--single_cell_type_file: /dfs6/pub/mkarikom/code/URSM/demo/demo_data/demo_single_cell_types.csv
+	--EM_convergence_tol: 1e-06
+	--initial_A_file: None
+	--initial_alpha_file: None
+	--initial_kappa_mean_var: None
+	--bulk_expr_file: /dfs6/pub/mkarikom/code/URSM/demo/demo_data/demo_bulk_rnaseq_counts.csv
+	--iMarkers_file: None
+	--mininimal_A: 1e-06
+	--single_cell_expr_file: /dfs6/pub/mkarikom/code/URSM/demo/demo_data/demo_single_cell_rnaseq_counts.csv
+	--verbose_level: 1
+	--est_alpha: True
+	--output_directory: out/
+	--number_of_cell_types: 3
+	--gibbs_thinning: 1
+	--logging_file: gem_log.log
+	--burn_in_length: 50
+	--output_prefix: gemout_
+	--bk_mean_approx: True
+	--Mstep_maxiter: 500
+	--Mstep_convergence_tol: 1e-06
+################################################################################
+Loading data ...
+50 bulk samples on 100 genes are loaded.
+50 single cells on 100 genes are loaded.
+
+Gibbs-EM started ...
+1-th EM iteration started...
+	E-step finished: elbo=-12495.219852
+	M-step finished: elbo=-12376.221534
+2-th EM iteration started...
